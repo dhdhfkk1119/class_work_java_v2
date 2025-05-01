@@ -76,6 +76,17 @@ public class GameFrame extends JFrame implements KeyListener {
             player1 = null;
         }
 
+//        switch (code){
+//            case 1: code = KeyEvent.VK_UP;
+//                playerY -= 10;
+//            case 2: code = KeyEvent.VK_DOWN;
+//                playerY += 10;
+//            case 3: code = KeyEvent.VK_LEFT;
+//                playerX -= 10;
+//            case 4: code = KeyEvent.VK_RIGHT;
+//                playerX += 10;
+//        }
+
         if (code == KeyEvent.VK_UP) {
             playerY -= 10;
         }
