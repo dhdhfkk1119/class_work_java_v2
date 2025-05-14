@@ -1,4 +1,4 @@
-package bubble.test06;
+package bubble.test07;
 
 /*
 * enum 을 사용하는 방법

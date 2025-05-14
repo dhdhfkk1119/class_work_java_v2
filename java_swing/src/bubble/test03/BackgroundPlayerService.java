@@ -38,18 +38,18 @@ public class BackgroundPlayerService implements Runnable {
 
             // leftColor - 논리적으로 255 ,0 ,0 이면 왼쪽벽에 충동함으로 판단
             // rightColor - 논리적으로 255 ,0 ,0 이면 왼쪽벽에 충동함으로 판단
-            if(leftColor.getRed() == 255 && leftColor.getGreen() == 0 || leftColor.getBlue() == 0){
+            if (leftColor.getRed() == 255 && leftColor.getGreen() == 0 || leftColor.getBlue() == 0) {
                 player.setLeftWallCrash(true);
                 player.setLeft(false);
-            }else if(rightColor.getRed() == 255 && rightColor.getGreen() == 0 || rightColor.getBlue() == 0){
+            } else if (rightColor.getRed() == 255 && rightColor.getGreen() == 0 || rightColor.getBlue() == 0) {
                 player.setRightWallCrash(true);
                 player.setRight(false);
-            }else {
+            } else {
                 player.setRightWallCrash(false);
                 player.setLeftWallCrash(false);
             }
-            
-            
+
+
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {

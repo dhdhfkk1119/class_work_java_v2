@@ -1,4 +1,4 @@
-package bubble.test05;
+package bubble.test06;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -12,7 +12,7 @@ public class BubbleFrame extends JFrame {
         initData();
         setInitLayout();
         addEventListener();
-        
+
         // 생성자 BackgroundPlayerService 안에있는 player 에 값을 넣어준다
         new Thread(new BackgroundPlayerService(player)).start();
     }
@@ -21,7 +21,7 @@ public class BubbleFrame extends JFrame {
         setTitle("버블버블게임");
         setSize(1000, 640);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        backgroundMap = new JLabel(new ImageIcon("images/backgroundMap.png"));
+        backgroundMap = new JLabel(new ImageIcon("images/backgroundMapService.png"));
 
         //루트 패널에 JLabel 를 넣어보기
         setContentPane(backgroundMap);
@@ -44,7 +44,7 @@ public class BubbleFrame extends JFrame {
             public void keyTyped(KeyEvent e) {
 
             }
-            
+
             // 키를 누를때 이벤트 계속 발생
             @Override
             public void keyPressed(KeyEvent e) {
@@ -62,7 +62,9 @@ public class BubbleFrame extends JFrame {
                         }
                         break;
                     case KeyEvent.VK_UP:
-                        player.up();
+                        if(player.isUp() == false && player.isDown() == false){
+                            player.up();
+                        }
                         break;
 
                     case KeyEvent.VK_SPACE:

@@ -1,4 +1,4 @@
-package bubble.test04;
+package bubble.test05;
 
 import javax.swing.*;
 
@@ -18,6 +18,10 @@ public class Player extends JLabel implements Moveable {
     boolean right;
     boolean down;
     boolean up;
+
+    //플레이어 방향 상태( enum 타입 사용 법 1 - 선언)
+    private PlayerWay playerWay;
+
 
     // 벽에 충돌한 상태
     private boolean leftWallCrash;
@@ -114,6 +118,10 @@ public class Player extends JLabel implements Moveable {
         this.rightWallCrash = rightWallCrash;
     }
 
+    public PlayerWay getPlayerWay(){
+        return playerWay;
+    }
+
     public Player() {
         initData();
         setInitLayout();
@@ -142,6 +150,7 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void left() {
+        playerWay = PlayerWay.LEFT;
         left = true; // 움직임 상태값 변경
         setIcon(playerL);
         // 익명 클래스 - thread.start() ---> run() 메서드 안에 구문 동작된다
@@ -164,6 +173,7 @@ public class Player extends JLabel implements Moveable {
 
     @Override
     public void right() {
+        playerWay = PlayerWay.RiGHT;
         right = true; // 움직임 상태값 변경
         setIcon(playerR);
         // 익명 클래스 - thread.start() ---> run() 메서드 안에 구문 동작된다

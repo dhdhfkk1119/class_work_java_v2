@@ -1,8 +1,8 @@
-package bubble.test04;
+package bubble.test05;
 
 import javax.swing.*;
 
-public class Bubble extends JLabel implements Moveable{
+public class Bubble extends JLabel implements Moveable {
     private int x;
     private int y;
 
@@ -16,8 +16,23 @@ public class Bubble extends JLabel implements Moveable{
 
     public Bubble(Player player) {
         this.player = player;
+
         initData();
         setInitLayout();
+        bubbleStartThread();
+    }
+
+    private void bubbleStartThread(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                if(player.getPlayerWay() == PlayerWay.LEFT){
+                    left();
+                }else{
+                    right();
+                }
+            }
+        }).start();
     }
 
     private void initData() {
@@ -102,21 +117,47 @@ public class Bubble extends JLabel implements Moveable{
 
     @Override
     public void left() {
+        left = true;
+        for(int i = 0 ; i< 400; i ++){
+            x--;
+            setLocation(x,y);
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        up();
     }
 
     @Override
     public void right() {
-
+        right = true;
+        for(int i = 0 ; i< 400; i ++){
+            x++;
+            setLocation(x,y);
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        up();
     }
 
     @Override
     public void up() {
-
+        up = true;
+        while(up){
+            y--;
+            setLocation(x,y);
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
-    @Override
-    public void down() {
-
-    }
 }
 

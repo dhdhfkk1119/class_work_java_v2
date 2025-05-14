@@ -1,4 +1,4 @@
-package bubble.test06;
+package bubble.test07;
 
 import javax.swing.*;
 
@@ -12,11 +12,13 @@ public class Bubble extends JLabel implements Moveable {
 
     private Player player;
 
-    private ImageIcon bubble;
+    private ImageIcon bubble; // 기본 물방울
+    private ImageIcon bomb;
+    private BackgroundBubbleService backgroundBubbleService;
 
     public Bubble(Player player) {
         this.player = player;
-
+        this.backgroundBubbleService = new BackgroundBubbleService(this);
         initData();
         setInitLayout();
         bubbleStartThread();
@@ -37,6 +39,7 @@ public class Bubble extends JLabel implements Moveable {
 
     private void initData() {
         bubble = new ImageIcon("images/bubble.png");
+        bomb = new ImageIcon("images/bomb.png");
         left = false;
         right = false;
         up = false;
@@ -121,6 +124,9 @@ public class Bubble extends JLabel implements Moveable {
         for(int i = 0 ; i< 400; i ++){
             x--;
             setLocation(x,y);
+            if(backgroundBubbleService.leftWall() == true){
+                break;
+            }
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
@@ -136,6 +142,9 @@ public class Bubble extends JLabel implements Moveable {
         for(int i = 0 ; i< 400; i ++){
             x++;
             setLocation(x,y);
+            if(backgroundBubbleService.rightWall() == true){
+                break;
+            }
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
@@ -151,11 +160,26 @@ public class Bubble extends JLabel implements Moveable {
         while(up){
             y--;
             setLocation(x,y);
+            if(backgroundBubbleService.upWall() == true){
+                break;
+            }
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+        }
+        try {
+            setIcon(bomb);
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            Thread.sleep(500);
+            setIcon(null);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

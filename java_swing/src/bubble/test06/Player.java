@@ -1,4 +1,4 @@
-package bubble.test05;
+package bubble.test06;
 
 import javax.swing.*;
 
@@ -197,7 +197,6 @@ public class Player extends JLabel implements Moveable {
     @Override
     public void up() {
         up = true;
-        setIcon(playerR);
         // 익명 클래스 - thread.start() ---> run() 메서드 안에 구문 동작된다
         new Thread(new Runnable() {
             @Override
@@ -211,6 +210,7 @@ public class Player extends JLabel implements Moveable {
                         throw new RuntimeException(e);
                     }
                 }
+                up = false;
                 down();
             }
         }).start();
@@ -222,9 +222,9 @@ public class Player extends JLabel implements Moveable {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < 130 / JUMP_SPEED; i++) {
+                while (down){
                     y += JUMP_SPEED;
-                    setLocation(x, y);
+                    setLocation(x,y);
                     try {
                         Thread.sleep(3);
                     } catch (InterruptedException e) {

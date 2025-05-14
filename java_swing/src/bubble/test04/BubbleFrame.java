@@ -1,4 +1,4 @@
-package bubble.test03;
+package bubble.test04;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -8,7 +8,6 @@ public class BubbleFrame extends JFrame {
 
     private JLabel backgroundMap;
     private Player player;
-
     public BubbleFrame() {
         initData();
         setInitLayout();
@@ -22,7 +21,7 @@ public class BubbleFrame extends JFrame {
         setTitle("버블버블게임");
         setSize(1000, 640);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        backgroundMap = new JLabel(new ImageIcon("images/backgroundMapService.png"));
+        backgroundMap = new JLabel(new ImageIcon("images/backgroundMap.png"));
 
         //루트 패널에 JLabel 를 넣어보기
         setContentPane(backgroundMap);
@@ -64,6 +63,10 @@ public class BubbleFrame extends JFrame {
                         break;
                     case KeyEvent.VK_UP:
                         player.up();
+                        break;
+
+                    case KeyEvent.VK_SPACE:
+                        add(new Bubble(player));
                         break;
 
                 }

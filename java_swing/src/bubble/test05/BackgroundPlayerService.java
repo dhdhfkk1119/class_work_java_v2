@@ -1,4 +1,4 @@
-package bubble.test04;
+package bubble.test05;
 
 /*
  * 현재 메인 쓰레드는 너무 바쁜 상태이다*/

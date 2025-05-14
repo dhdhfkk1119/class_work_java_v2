@@ -1,4 +1,4 @@
-package bubble.test06;
+package bubble.test07;
 
 /*
 * BackgroundPlayerService 는 스레드가 계속 돌고 있는 상태이다
@@ -6,8 +6,6 @@ package bubble.test06;
 * 게임에 많은 영향을 미칠 수 있다. 즉, 너무 느려질 가능성이 많다
 * */
 
-
-import bubble.test07.Bubble;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -28,12 +26,32 @@ public class BackgroundBubbleService {
         }
     }
 
-    // 왼쪽 벽 확인
-    public boolean leftWall(){
-        Color leftColor = new Color(image.getRGB(bubble.getX() + 10, bubble.getY() + 25));
-        if(leftColor.getRed() == 255 && leftColor.getBlue() == 0 && leftColor.getGreen() == 0){
+    public boolean upWall(){
+        Color upWall = new Color(image.getRGB(bubble.getX() + 35, bubble.getY()));
+        if(upWall.getRed() == 255 && upWall.getBlue() == 0 && upWall.getGreen() == 0){
             return true;
         }
         return false;
     }
+
+    // 왼쪽 벽 확인
+    public boolean leftWall(){
+        Color leftColor = new Color(image.getRGB(bubble.getX() + 10, bubble.getY() + 25));
+        if(leftColor.getRed() == 255 && leftColor.getBlue() == 0 && leftColor.getGreen() == 0){
+
+            return true;
+        }
+        return false;
+    }
+
+    public boolean rightWall(){
+        Color rightColor = new Color(image.getRGB(bubble.getX() + 60, bubble.getY() + 25));
+        if(rightColor.getRed() == 255 && rightColor.getBlue() == 0 && rightColor.getGreen() == 0){
+
+            return true;
+        }
+        return false;
+    }
+
+
 }

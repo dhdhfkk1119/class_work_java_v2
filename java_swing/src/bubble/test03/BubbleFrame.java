@@ -1,5 +1,7 @@
 package bubble.test03;
 
+import bubble.test04.Bubble;
+
 import javax.swing.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

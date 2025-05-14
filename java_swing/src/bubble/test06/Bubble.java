@@ -1,4 +1,4 @@
-package bubble.test05;
+package bubble.test06;
 
 import javax.swing.*;
 
@@ -34,6 +34,8 @@ public class Bubble extends JLabel implements Moveable {
             }
         }).start();
     }
+
+
 
     private void initData() {
         bubble = new ImageIcon("images/bubble.png");
