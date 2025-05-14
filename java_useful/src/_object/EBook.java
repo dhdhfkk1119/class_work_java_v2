@@ -1,5 +1,6 @@
 package _object;
 
+
 public class EBook {
     
     private int bookTypeId;
