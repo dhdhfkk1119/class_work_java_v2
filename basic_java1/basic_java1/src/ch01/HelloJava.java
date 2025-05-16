@@ -13,7 +13,7 @@ public class HelloJava {
 
         // System.out.println() -> Console에 () 안에 내용을 출력하는 명령어
         // ; -> 문장의 끝을 표시하는 역할을 한다
-        System.out.println("Hello Java");
+        System.out.println("Hello Javaasdasd");
         System.out.println("안녕 코드 수정 했어");
     } // end of main
 
