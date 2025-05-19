@@ -1,5 +1,8 @@
 package util;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -9,6 +12,9 @@ import java.sql.SQLException;
 * @author 병장조정우
 * 데이터 베이스 연결을 관리하는 유틸리티 클래스
 * */
+
+@Getter
+@Setter
 public class DataBaseUtil {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/libarary?serverTimezone=Asia/Seoul";
     private static final String DB_USER = "root";

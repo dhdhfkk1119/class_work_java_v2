@@ -1,19 +1,20 @@
 package dto;
 
-import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor // 기본 생성자 만들어주기 (매개변수)
-@AllArgsConstructor // 기본 생성자 에 매개변수를 만들어줌
-@ToString
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
     private int id;
     private String title;
     private String author;
     private String publisher;
     private int publicationYear;
-    private int isbn;
+    private String isbn;
     private boolean available;
 
 }
