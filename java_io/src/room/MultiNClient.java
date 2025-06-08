@@ -1,4 +1,4 @@
-package client_socket.ch05;
+package room;
 
 /*
 * 서버와 양방향 통신하는 클라이언트 측 코드*/
@@ -29,7 +29,7 @@ public class MultiNClient {
 
     // 입출력 스트림을 설정하는 부분
     private void setupStreams() throws IOException {
-        printWriter = new PrintWriter(socket.getOutputStream());
+        printWriter = new PrintWriter(socket.getOutputStream(),true);
         bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream())); // 소켓에서 오는 문자를 바이트로 읽음
         keyBoardReader = new BufferedReader(new InputStreamReader(System.in)); // 키보드 입력을 읽어 냄
     }
@@ -54,7 +54,12 @@ public class MultiNClient {
             try {
                 String keyMessage;
                 while ((keyMessage = keyBoardReader.readLine()) != null){
-                    printWriter.println("[" + name +  "] :" + keyMessage);
+                    if (keyMessage.equals("1") || keyMessage.equals("2") || keyMessage.equals("3")) {
+                        printWriter.println(keyMessage); // ⭐ 이름 없이 그대로 보냄
+                    } else {
+                        // 대화 등 이후 메시지는 이름 붙여서 전송
+                        printWriter.println("[" + name + "] :" + keyMessage);
+                    }
                 }
             } catch (Exception e) {
                 throw new RuntimeException(e);
